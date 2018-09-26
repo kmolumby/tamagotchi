@@ -98,12 +98,6 @@ const timePassing = () => {
       turnOffNight();
 
     }
-    });
-
-
-
- 
-
 
     $('#bored-btn').on('click', () => {
         console.log('button works');
@@ -113,8 +107,18 @@ const timePassing = () => {
         $('#boredom-stat').text(pet.bordeom);
         $('#shiba').attr('src', 'images/AW526511_03.gif');
         }
+    });
+
+    $('#try-again').on('click', () => {
+        location.reload();
+    });
 
     });
 
+
+
+
+
+    
 
 
