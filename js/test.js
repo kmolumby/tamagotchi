@@ -1,3 +1,11 @@
+
+const game  = {
+    boredAlert: false,
+
+    hungerAlert:false,
+}
+
+
 class Tamagotchi {
     constructor(name) {
         name = name;
@@ -11,6 +19,7 @@ class Tamagotchi {
 
 const pet = new Tamagotchi(name);
 
+
 $( document ).ready(function() {
     console.log('does this work')
     $('#modal-start').modal('show');
@@ -21,10 +30,6 @@ $( document ).ready(function() {
     $('.start-game').on('click', () => {
 
         $('#modal-start').modal('hide');
-
-
-    //    
-
 
         const $tamagotchiname = $('input').val();
         $('#name-stat').append($tamagotchiname);
@@ -202,23 +207,25 @@ $( document ).ready(function() {
                 //     $('#shiba').attr('src', 'images/bd88876ac5a2f093d5f9112ae13f02fe.gif');
         
                 // }
-                if (pet.hunger === 4) {
+                if (pet.hunger === 8) {
                     $('#shiba').attr('src', 'images/AW866286_07.gif');
                     
         
                     // $('section').css('background-image', "url('https://imgflip.com/i/2io2f4')" );
                     }
+                    
 
-                if ( pet.bordeom === 4 ) {
-                    $('#shiba').attr('src', 'images/AW866286_07.gif');
+                if ( pet.bordeom === 4 && game.boredAlert === false) {
+                    
+                    game.boredAlert =true;
                     $('#modal-alert').modal('show');
 
-                    $('#alert').text(`Please play with ${tamagotchiname}`);
-
+                    $('#alert').text('Please play with me');
+                    } 
                     
         
                     // $('section').css('background-image', "url('https://imgflip.com/i/2io2f4')" );
-                    }
+                    
         
                 if (pet.hunger === 10 || pet.bordeom === 10 || pet.sleep === 10) {
                     pet.alive = false;
@@ -228,6 +235,7 @@ $( document ).ready(function() {
                     // $('section').css('background-image', "url('https://imgflip.com/i/2io2f4')" );
                     }
                 }
+        
             var passTime = setInterval(timePassing, 500);
     
             $('#hunger-btn').on('click', () => {
