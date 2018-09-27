@@ -3,6 +3,8 @@ const game  = {
     boredAlert: false,
 
     hungerAlert:false,
+
+    sleepAlert : false,
 }
 
 
@@ -34,16 +36,22 @@ $( document ).ready(function() {
         const $tamagotchiname = $('input').val();
         $('#name-stat').append($tamagotchiname);
 
+
+
         const moveLeft=()=>{
             if(pet.alive === true){
-                $("#shiba").animate({"margin-left": "+350"}, 5000, moveLeftCenter);
+                
+                $("#shiba").animate({"margin-left": "+80"}, 2000, moveLeftCenter);
             function moveLeftCenter() {
-                $("#shiba").animate({"margin-left": "-30"}, 5000, moveLeft);
+                $("#shiba").animate({"margin-left": "-30"}, 2000, moveLeft);
                 }
+
+                
             }
         };
         
         moveLeft();
+
        
        
     
@@ -58,134 +66,48 @@ $( document ).ready(function() {
                     console.log(`the pet is ${pet.hunger} hungry`)
                     
                 }
-
-                if (pet.hunger === 1) {
-                    $('#hunger-stat').css("width", "10%");
+               
+                const displayHungerProgress = () => {
+                    let num = pet.hunger * 10;
+                    let percent = `${num}%`;
+                    $('#hunger-stat').css("width", percent);
                 }
-
-                if (pet.hunger === 2) {
-                    $('#hunger-stat').css("width", "20%");
-                }
-
-                if (pet.hunger === 3) {
-                    $('#hunger-stat').css("width", "30%");
-                }
-
-                if (pet.hunger === 4) {
-                    $('#hunger-stat').css("width", "40%");
-                }
-
-                if (pet.hunger === 5) {
-                    $('#hunger-stat').css("width", "50%");
-                }
-
-                if (pet.hunger === 6) {
-                    $('#hunger-stat').css("width", "60%");
-                }
-
-                if (pet.hunger === 7) {
-                    $('#hunger-stat').css("width", "70%");
-                }
-
-                if (pet.hunger === 8) {
-                    $('#hunger-stat').css("width", "80%");
-                }
-
-                if (pet.hunger === 9) {
-                    $('#hunger-stat').css("width", "90%");
-                }
-
-                if (pet.hunger === 10) {
-                    $('#hunger-stat').css("width", "100%");
-                }
+    
+                displayHungerProgress();
+               
                 // Progreass Bars sleep
-                if (pet.sleep === 1) {
-                    $('#sleep-stat').css("width", "10%");
-                }
 
-                if (pet.sleep === 2) {
-                    $('#sleep-stat').css("width", "20%");
-                }
-
-                if (pet.sleep === 3) {
-                    $('#sleep-stat').css("width", "30%");
-                }
-
-                if (pet.sleep === 4) {
-                    $('#sleep-stat').css("width", "40%");
-                }
-
-                if (pet.sleep === 5) {
-                    $('#sleep-stat').css("width", "50%");
-                }
-
-                if (pet.sleep === 6) {
-                    $('#sleep-stat').css("width", "60%");
-                }
-
-                if (pet.sleep === 7) {
-                    $('#sleep-stat').css("width", "70%");
-                }
-
-                if (pet.sleep === 8) {
-                    $('#sleep-stat').css("width", "80%");
-                }
-
-                if (pet.sleep === 9) {
-                    $('#sleep-stat').css("width", "90%");
-                }
-                if (pet.sleep === 10) {
-                    $('#sleep-stat').css("width", "100%");
-                }
                 if(seconds % 6 == 0) {
                     pet.sleep++;
                     $('.sleep-stat-num').text(pet.sleep);
                 }
+                const displaySleepProgress = () => {
+                    let numSleep = pet.sleep * 10;
+                    let percentSleep = `${numSleep}%`;
+                    $('#sleep-stat').css("width", percentSleep);
+                }
+    
+                displaySleepProgress();
+                
+               
                 
 // Boredom Stats
-                if (pet.bordeom === 1) {
-                    $('#boredom-stat').css("width", "10%");
-                }
 
-                if (pet.bordeom === 2) {
-                    $('#boredom-stat').css("width", "20%");
+   const displayBoredProgress = () => {
+                    let numBored = pet.bordeom * 10;
+                    let percentBored = `${numBored}%`;
+                    $('#boredom-stat').css("width", percentBored);
                 }
+    
+                displayBoredProgress();
+                
 
-                if (pet.bordeom === 3) {
-                    $('#boredom-stat').css("width", "30%");
-                }
-
-                if (pet.bordeom === 4) {
-                    $('#boredom-stat').css("width", "40%");
-                }
-
-                if (pet.bordeom === 5) {
-                    $('#boredom-stat').css("width", "50%");
-                }
-
-                if (pet.bordeom === 6) {
-                    $('#boredom-stat').css("width", "60%");
-                }
-
-                if (pet.bordeom === 7) {
-                    $('#boredom-stat').css("width", "70%");
-                }
-
-                if (pet.bordeom === 8) {
-                    $('#boredom-stat').css("width", "80%");
-                }
-
-                if (pet.bordeom === 9) {
-                    $('#boredom-stat').css("width", "90%");
-                }
-
-                if (pet.bordeom === 10) {
-                    $('#boredom-stat').css("width", "100%");
-                }
                 if(seconds % 8 == 0) {
                     pet.bordeom++;
                     $('.boredom-stat-num').text(pet.bordeom);
                 }
+
+
                 
                 if(seconds % 10 == 0) {
                     pet.age++;
@@ -193,39 +115,38 @@ $( document ).ready(function() {
         
                     }
         
-                // if (pet.age === 3) {
-                //     $('#shiba').attr('src', 'images/AW866286_00.gif');
-        
-                // }
-        
-                // if (pet.age === 2) {
-                //     $('#shiba').attr('src', 'images/AW866286_07.gif');
-        
-                // }
-        
-                // if (pet.age === 1) {
-                //     $('#shiba').attr('src', 'images/bd88876ac5a2f093d5f9112ae13f02fe.gif');
-        
-                // }
+               
                 if (pet.hunger === 8) {
-                    $('#shiba').attr('src', 'images/AW866286_07.gif');
+                    $('#shiba').attr('src', 'images/angry-shiba.gif');
                     
         
                     // $('section').css('background-image', "url('https://imgflip.com/i/2io2f4')" );
                     }
                     
+                    if ( pet.hunger === 5 && game.boredAlert === false) {
+                    
+                        game.hungerAlert = true;
+                        $('#modal-alert').modal('show');
+    
+                        $('#alert').text('I\'m so hungry! Please feed me!');
+                        } 
+                        
+                        if (pet.hunger <=4) {
+                            game.boredAlert = false;
+                        } 
+
 
                 if ( pet.bordeom === 4 && game.boredAlert === false) {
                     
-                    game.boredAlert =true;
+                    game.boredAlert = true;
                     $('#modal-alert').modal('show');
 
                     $('#alert').text('Please play with me');
                     } 
                     
-        
-                    // $('section').css('background-image', "url('https://imgflip.com/i/2io2f4')" );
-                    
+                    if (pet.bordeom <=3) {
+                        game.boredAlert = false;
+                    }                    
         
                 if (pet.hunger === 10 || pet.bordeom === 10 || pet.sleep === 10) {
                     pet.alive = false;
@@ -242,7 +163,7 @@ $( document ).ready(function() {
                 if ( pet.hunger > 0) {
                 pet.hunger --;
                 $('.hunger-stat-num').text(pet.hunger);
-                $('#shiba').attr('src', 'images/AW305605_17.gif');
+                $('#shiba').attr('src', 'images/fed-shiba.gif');
                 }
             });
         
@@ -251,7 +172,7 @@ $( document ).ready(function() {
                    
                 pet.sleep --;
                 $('.sleep-stat-num').text(pet.sleep);
-                $('#shiba').attr('src', 'images/8063622105f388f97a81d9f1115d7e48.gif');
+                $('#shiba').attr('src', 'images/sleep-shiba.gif');
                 $('section').css('background-image', "url('images/night.png')" );
                 
                 const switchImage = () => {
@@ -273,7 +194,7 @@ $( document ).ready(function() {
                 if ( pet.bordeom > 0) {
                 pet.bordeom --;
                 $('.boredom-stat-num').text(pet.bordeom);
-                $('#shiba').attr('src', 'images/AW526511_03.gif');
+                $('#shiba').attr('src', 'images/play-shiba.gif');
                 }
         
             });
@@ -292,30 +213,4 @@ $( document ).ready(function() {
 
 
 
-       // const moveShiba = () => {
-        //     $("#shiba").velocity({ translateX: 100 }, { 
-        //         easing: "easeOut",
-        //         duration: 300,
-        //     });
-
-            // $("#shiba").velocity({ translateX: 200 }, { 
-            //     easing: "easeOut",
-            //     duration: 400,
-            // });
-            // $("#shiba").velocity({ translateX: 300 }, { 
-            //     easing: "easeOut",
-            //     duration: 400,
-            // });
-
-            // $("#shiba").velocity({ translateX: 100 }, { 
-            //     easing: "easeOut",
-            //     duration: 400,
-            // });
-
-            // $("#shiba").velocity({ translateX: 100 }, { 
-            //     easing: "easeOut",
-            //     duration: 400,
-            // });
-        // }
-     
-    //    moveShiba();
+      
